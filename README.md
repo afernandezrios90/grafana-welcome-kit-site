@@ -19,7 +19,7 @@ python3 -m http.server 8000
 
 - `index.html` — the welcome kit page (responsive; supports print / "Save as PDF")
 - `fonts/`, `images/`, `grafana-labs-logo-white.png` — page assets (self-contained, no CDN)
-- `welcome-kit-sub100.pdf` — downloadable PDF version
+- `welcome-kit-onepager.pdf` — downloadable PDF version
 
 ## Publishing with GitHub Pages
 
