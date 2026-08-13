@@ -2,340 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Grafana Cloud Welcome Kit</title>
-<style>
-  :root {
-    --orange: #FF671D;
-    --orange-light: #FF8A4D;
-    --ink: #171717;
-    --slate: #3A3A3A;
-    --muted: #696969;
-    --line: #E4E4E4;
-    --bg-soft: #F4F4F4;
-    --bg-card: #FFFFFF;
-    --accent-blue: #2970FF;
-    --accent-green: #04BC4C;
-  }
-
-  @font-face {
-    font-family: 'Inter';
-    src: url('fonts/Inter-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Inter';
-    src: url('fonts/Inter-SemiBold.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Inter';
-    src: url('fonts/Inter-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Poppins';
-    src: url('fonts/Poppins-SemiBold.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  * { box-sizing: border-box; }
-
-  html, body {
-    margin: 0;
-    padding: 0;
-    font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: var(--ink);
-    font-size: 10.2px;
-    line-height: 1.45;
-    font-feature-settings: "cv11", "ss01";
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  @page {
-    size: A4;
-    margin: 12mm 11mm;
-  }
-
-  /* ============================================================
-     SCREEN (web page): responsive centered "document".
-     Print/PDF is unaffected — it uses the @page rules above.
-     ============================================================ */
-  @media screen {
-    html { background: #ECECEC; }
-    body {
-      max-width: 900px;
-      margin: 28px auto;
-      padding: 36px 36px 30px;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 6px 30px rgba(0,0,0,0.13);
-    }
-  }
-  /* NOTE: responsive stacking rules live at the END of this stylesheet,
-     so they win over the base .cols-2/.cols-3 rules by source order. */
-
-  a { color: var(--accent-blue); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  h1, h2, h3 { margin: 0; font-weight: 700; letter-spacing: -0.01em; }
-
-  /* Poppins SemiBold for headings & subheadings */
-  h1, h2, h3,
-  .section-label, .kicker, .flow-title, .brand-tier, .step-txt {
-    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
-    font-weight: 600;
-  }
-  h1 { letter-spacing: -0.02em; }
-
-  /* ---------- Header ---------- */
-  .hero {
-    background: linear-gradient(115deg, #171717 0%, #2A1A0F 55%, #3D2410 100%);
-    border-radius: 14px;
-    padding: 12px 22px;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 10px;
-  }
-  .hero::after {
-    content: "";
-    position: absolute;
-    right: -60px; top: -60px;
-    width: 220px; height: 220px;
-    background: radial-gradient(circle at center, rgba(255,103,29,0.55), rgba(255,103,29,0) 70%);
-  }
-  .hero-top { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; }
-  .brand-logo { height: 26px; width: auto; display: block; }
-  .brand-tier {
-    margin-left: auto;
-    font-size: 8.5px;
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
-    background: rgba(255,103,29,0.18);
-    border: 1px solid rgba(255,103,29,0.5);
-    color: #FFB98A;
-    padding: 3px 9px;
-    border-radius: 999px;
-    font-weight: 600;
-  }
-  .hero h1 { font-size: 22px; line-height: 1.1; margin-bottom: 6px; }
-  .hero h1 span { color: #FFFFFF; }
-  .hero p { margin: 0; max-width: 570px; color: #D6D7DC; font-size: 11.6px; }
-
-  /* ---------- Layout ---------- */
-  .grid { display: grid; gap: 11px; }
-  .cols-2 { grid-template-columns: 1fr 1fr; }
-  .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-
-  .card {
-    background: var(--bg-card);
-    border: 1px solid var(--line);
-    border-radius: 11px;
-    padding: 10px 14px;
-    break-inside: avoid;
-  }
-  .card.soft { background: var(--bg-soft); }
-
-  .card h2 {
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 7px;
-    color: var(--ink);
-  }
-  .ic {
-    width: 19px; height: 19px; flex: 0 0 19px;
-    border-radius: 6px;
-    background: var(--orange);
-    display: inline-flex; align-items: center; justify-content: center;
-    color: #fff;
-  }
-  .ic svg { width: 12px; height: 12px; }
-
-  ul { margin: 0; padding-left: 0; list-style: none; }
-  li { position: relative; padding-left: 15px; margin-bottom: 3px; }
-  li::before {
-    content: "";
-    position: absolute; left: 2px; top: 6px;
-    width: 5px; height: 5px; border-radius: 50%;
-    background: var(--orange);
-  }
-  li.check { padding-left: 20px; margin-bottom: 9px; line-height: 1.5; }
-  li.check:last-child { margin-bottom: 0; }
-  li.check::before {
-    content: "";
-    left: 0; top: 1px;
-    width: 12px; height: 12px; border-radius: 3px;
-    background: #fff;
-    border: 1.6px solid #AFAFAF;
-  }
-  .sub { color: var(--muted); }
-  strong { color: var(--ink); }
-
-  /* step chips */
-  .steps { display: flex; gap: 9px; }
-  .step {
-    flex: 1;
-    background: var(--bg-soft);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 8px 12px;
-    position: relative;
-  }
-  .step-num {
-    font-size: 8px; font-weight: 700; color: var(--orange);
-    letter-spacing: 0.1em; text-transform: uppercase;
-  }
-  .step-txt { font-weight: 600; font-size: 10.4px; margin-top: 2px; }
-
-  .team-role { margin-bottom: 6px; }
-  .team-role .r-title { font-weight: 700; }
-  .team-role .r-desc { color: var(--muted); }
-
-  .kicker {
-    font-size: 8px; text-transform: uppercase; letter-spacing: 0.1em;
-    color: var(--orange); font-weight: 700; margin-bottom: 3px;
-  }
-
-  .tag {
-    display:inline-block; font-size: 8.2px; font-weight: 600;
-    background: #EEF1F6; color: var(--accent-blue);
-    padding: 1px 7px; border-radius: 999px; margin-right:3px;
-  }
-
-  .callout {
-    margin-top: 9px;
-    background: linear-gradient(100deg, rgba(255,103,29,0.10), rgba(255,103,29,0.03));
-    border: 1px solid rgba(255,103,29,0.35);
-    border-radius: 8px;
-    padding: 8px 11px;
-    font-weight: 600;
-    color: #9A3D00;
-  }
-
-  /* arrow-joined flow boxes */
-  .flow { display: flex; align-items: stretch; margin-top: 4px; }
-  .flow-box {
-    flex: 1;
-    background: var(--bg-soft);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 9px 11px;
-  }
-  .flow-num {
-    width: 18px; height: 18px; border-radius: 50%;
-    background: var(--orange); color: #fff;
-    font-size: 9px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 6px;
-  }
-  .flow-title { font-weight: 700; font-size: 10.6px; margin-bottom: 2px; }
-  .step-img {
-    display: block; width: 100%; height: auto; max-height: 118px;
-    margin: 7px 0 6px;
-    border: 1px solid var(--line); border-radius: 6px;
-    background: #fff;
-  }
-  .flow-desc { color: var(--muted); font-size: 9.6px; line-height: 1.4; }
-  .flow-desc code { font-size: 8.4px; }
-  .flow-arrow {
-    flex: 0 0 28px;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--orange);
-  }
-  .flow-arrow svg { width: 16px; height: 16px; }
-
-  code {
-    background: #EEF0F3; border-radius: 4px; padding: 1px 5px;
-    font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 9px;
-    color: var(--slate);
-  }
-
-  .section-label {
-    font-size: 8.5px; text-transform: uppercase; letter-spacing: 0.12em;
-    color: var(--muted); font-weight: 700; margin: 9px 2px 4px;
-  }
-
-  /* Numbered "pathway" pills (Training) — WELCOME KIT badge style */
-  .stage-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
-    font-weight: 600; font-size: 8.5px;
-    text-transform: uppercase; letter-spacing: 0.08em;
-    color: #B24310;
-    background: rgba(255,103,29,0.10);
-    border: 1px solid rgba(255,103,29,0.45);
-    padding: 3px 11px 3px 3px;
-    border-radius: 999px;
-    margin-bottom: 8px;
-  }
-  .stage-num {
-    width: 15px; height: 15px; border-radius: 50%;
-    background: var(--orange); color: #fff;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 8.5px; font-weight: 700;
-  }
-
-  .footer {
-    margin-top: 8px;
-    border-top: 1px solid var(--line);
-    padding-top: 6px;
-    display: flex; align-items: center; gap: 10px;
-    color: var(--muted); font-size: 8.8px;
-  }
-  .footer .dot {
-    width: 5px; height: 5px; border-radius: 50%;
-    background: var(--orange); display: inline-block;
-  }
-  .footer-right { margin-left: auto; }
-
-  .two-col-list { columns: 2; column-gap: 18px; }
-  .two-col-list li { break-inside: avoid; }
-
-  /* Numbered list — replaces the orange dot with an orange "1." marker */
-  ol.num-list { counter-reset: step; list-style: none; margin: 0; padding-left: 0; }
-  ol.num-list li { padding-left: 18px; }
-  ol.num-list li::before {
-    counter-increment: step;
-    content: counter(step) ".";
-    left: 0; top: 0;
-    width: auto; height: auto;
-    background: none; border-radius: 0;
-    color: var(--orange); font-weight: 700;
-    font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 9.5px;
-  }
-
-  /* ============================================================
-     RESPONSIVE OVERRIDES (screen only) — placed last so they win
-     over the base .cols-2/.cols-3 rules by source order.
-     ============================================================ */
-  /* Tablet / narrow: drop the training row to 2 columns */
-  @media screen and (max-width: 760px) {
-    .cols-3 { grid-template-columns: 1fr 1fr; }
-  }
-
-  /* Mobile: single column, vertical step flows, full-bleed */
-  @media screen and (max-width: 620px) {
-    body { margin: 0; padding: 22px 16px 28px; border-radius: 0; box-shadow: none; }
-    .cols-2, .cols-3 { grid-template-columns: 1fr; }
-    .flow { flex-direction: column; align-items: stretch; }
-    .flow-arrow { transform: rotate(90deg); flex: 0 0 auto; padding: 5px 0; }
-    .two-col-list { columns: 1; }
-    .hero h1 { font-size: 20px; }
-    .hero p { font-size: 11px; }
-  }
-</style>
+<link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 
@@ -346,41 +15,32 @@
       <span class="brand-tier">Welcome Kit</span>
     </div>
     <h1>Welcome to <span>Grafana Cloud</span></h1>
-    <p>Our mission is to empower you to unite all your data — no matter where it lives — so your teams can analyze, take action, and make smart decisions. This kit gets you productive from day one.</p>
+    <p>Our mission is to empower you to unite all your data — no matter where it lives — so your teams can analyze, take action, and make smart decisions. Here’s your action plan to get set up right from the start.</p>
   </div>
 
-  <!-- MEET TEAM + CHECKLIST -->
-  <div class="grid cols-2" style="margin-bottom:5px;">
-    <div class="card">
-      <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.4"/><path d="M16 20c0-2.6 1.4-4.6 4-5"/></svg></span>Meet your team</h2>
-      <div class="team-role">
-        <span class="r-title">Account Executive</span> <span class="r-desc">— your main point of contact</span>
-      </div>
-      <div class="section-label">On-demand, based on your needs</div>
-      <ul>
-        <li><strong>Technical Support</strong> <span class="sub">— troubleshooting, bugs &amp; issues</span></li>
-        <li><strong>Solutions Engineer</strong> <span class="sub">— solves new problems &amp; use cases</span></li>
-        <li><strong>Observability Architect</strong> <span class="sub">— shapes your observability strategy</span></li>
-      </ul>
-      <div class="section-label">Additional offerings</div>
-      <ul>
-        <li><strong>Professional Services</strong> <span class="sub">— Grafana experts for hands-on implementation</span></li>
-      </ul>
-    </div>
+  <!-- GET YOUR ORG READY -->
+  <div class="card" style="margin-bottom:5px;">
+    <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M9 11l2 2 4-4"/><rect x="3" y="4" width="18" height="16" rx="2.5"/></svg></span>Get your organization ready</h2>
+    <ul>
+      <li class="check">Identify project stakeholders to involve with the Grafana team</li>
+      <li class="check">Designate your organization's Grafana administrators</li>
+      <li class="check">Ensure that admins are invited to the Grafana organization</li>
+    </ul>
+  </div>
 
-    <div class="card">
-      <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M9 11l2 2 4-4"/><rect x="3" y="4" width="18" height="16" rx="2.5"/></svg></span>Your onboarding checklist</h2>
-      <ul>
-        <li class="check">Identify project stakeholders to involve with the Grafana team</li>
-        <li class="check">Designate your organization's Grafana administrators</li>
-        <li class="check">Ensure that admins are invited to the Grafana organization</li>
-        <li class="check">Schedule a kick-off call with your Account Executive</li>
-      </ul>
-    </div>
+  <!-- DECISIONS TO MAKE UP FRONT -->
+  <div class="card" style="margin-bottom:5px;">
+    <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M9 18l6-6-6-6"/><path d="M4 6v4a2 2 0 002 2h9"/></svg></span>Decisions to make up front</h2>
+    <p class="sub" style="margin:0 0 8px;">Set these once, then forget. The strategy and how-to for each lives in your <a href="resources/">Onboarding Resources</a>.</p>
+    <ul>
+      <li class="check"><span class="d-title">Billing safeguards</span> — designate a cost/FinOps owner, learn your committed budget &amp; how products draw it down, and set usage alerts. <a class="learn" href="resources/#cost">Cost management →</a></li>
+      <li class="check"><span class="d-title">Stack rollout</span> — decide single- vs multi-stack and which region(s) to deploy in (mind any Private Link needs). <a class="learn" href="resources/#stack">Stack considerations →</a></li>
+      <li class="check"><span class="d-title">Access &amp; governance</span> — configure SSO, and plan your roles/teams (RBAC) &amp; data access (LBAC). <a class="learn" href="resources/#access">Access &amp; governance →</a></li>
+    </ul>
   </div>
 
   <!-- FIRST STEPS AS ADMIN -->
-  <div class="card" style="margin-bottom:5px;">
+  <div class="card">
     <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></span>Your first steps in Grafana Cloud as an admin</h2>
     <div class="flow">
       <div class="flow-box">
@@ -403,97 +63,15 @@
     </div>
   </div>
 
-  <!-- SUPPORT -->
-  <div class="card" style="margin-bottom:5px;">
-    <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10.5 21a2 2 0 003 0"/></svg></span>How to contact Technical Support</h2>
-    <div class="flow">
-      <div class="flow-box">
-        <div class="flow-num">1</div>
-        <div class="flow-title">Log in &amp; select your org</div>
-        <img class="step-img" src="images/support-1.png" alt="Select your organization from the dropdown">
-        <div class="flow-desc">Sign in at <a href="https://grafana.com">grafana.com</a> and choose your organization.</div>
-      </div>
-      <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l7 6-7 6"/></svg></div>
-      <div class="flow-box">
-        <div class="flow-num">2</div>
-        <div class="flow-title">Open the support area</div>
-        <img class="step-img" src="images/support-2.png" alt="Support &gt; Get Support menu">
-        <div class="flow-desc">In the admin area, go to <code>SUPPORT &gt; Get Support</code>.</div>
-      </div>
-      <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l7 6-7 6"/></svg></div>
-      <div class="flow-box">
-        <div class="flow-num">3</div>
-        <div class="flow-title">Open a ticket</div>
-        <img class="step-img" src="images/support-3.png" alt="Open a ticket">
-        <div class="flow-desc">Select <code>Support ticket &gt; + Open a ticket</code>.</div>
-      </div>
-    </div>
-    <div class="section-label">Best practices for faster resolution</div>
-    <ul class="two-col-list">
-      <li>Check the <a href="https://status.grafana.com/">System Status Page</a> first</li>
-      <li>Share versions, logs, config files &amp; screenshots</li>
-      <li>Give detailed steps to reproduce the issue</li>
-      <li>Watch for follow-up questions</li>
-    </ul>
+  <!-- CTA TO RESOURCES -->
+  <div class="cta-banner">
+    <span class="cta-text">Made your calls and deployed?
+      <span class="cta-sub">Dive into the how-to: stack topology, SSO, RBAC/LBAC, cost management, support &amp; training.</span>
+    </span>
+    <a class="cta-btn" href="resources/">Onboarding Resources
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l7 6-7 6"/></svg>
+    </a>
   </div>
-
-  <!-- BILLING -->
-  <div class="card" style="margin-bottom:5px;">
-    <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/></svg></span>Understand your billing</h2>
-    <p class="sub" style="margin:0 0 7px;">Your stack includes a <a href="https://grafana.com/docs/grafana-cloud/cost-management-and-billing/">Cost Management &amp; Billing</a> area where you can track your spend.</p>
-    <div class="grid cols-2">
-      <div>
-        <div class="section-label" style="margin-top:0;">Recommended on day one</div>
-        <!-- billing labels keep tight top: they sit at the top of their column -->
-        <ol class="num-list">
-          <li>Designate a billing contact for usage &amp; billing alerts</li>
-          <li>Learn how product usage draws down your committed budget</li>
-          <li>Set up usage alerts to avoid surprises &amp; react to spikes</li>
-        </ol>
-      </div>
-      <div>
-        <div class="section-label" style="margin-top:0;">Save these links</div>
-        <ul>
-          <li><a href="https://grafana.com/docs/grafana-cloud/cost-management-and-billing/manage-invoices/understand-your-invoice/">Understand your invoice</a></li>
-          <li><a href="https://grafana.com/docs/grafana-cloud/cost-management-and-billing/analyze-costs/">Analyze &amp; reduce costs</a></li>
-          <li><a href="https://grafana.com/docs/grafana-cloud/cost-management-and-billing/set-up/set-up-usage-alerts/">Set up usage alerts</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="callout">Need guidance on cost management? Reach out to your Account Executive.</div>
-  </div>
-
-  <!-- TRAINING -->
-  <div class="card">
-    <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M12 3L2 8l10 5 10-5-10-5z"/><path d="M6 10.5V15c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg></span>Training &amp; learning resources</h2>
-    <div class="grid cols-3">
-      <div>
-        <div class="stage-badge"><span class="stage-num">1</span>Get started</div>
-        <ul>
-          <li><a href="https://grafana.com/whats-new/2025-11-18-interactive-learning-in-grafana/">Interactive learning</a> in Grafana</li>
-          <li><a href="https://grafana.com/docs/learning-hub/">Grafana Learning Hub</a> paths</li>
-          <li><a href="https://learn.grafana.com/">Grot Academy</a> for practitioners</li>
-        </ul>
-      </div>
-      <div>
-        <div class="stage-badge"><span class="stage-num">2</span>Go deeper</div>
-        <ul>
-          <li><a href="https://grafana.com/videos">Webinars</a></li>
-          <li><a href="https://grafana.com/docs/">Technical documentation</a></li>
-          <li>Play in a sandbox: <a href="https://play.grafana.org">Grafana Play</a> · <a href="https://grafana.com/products/cloud/free-tier/">free-forever tier</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="stage-badge"><span class="stage-num">3</span>Accelerate with AI</div>
-        <ul>
-          <li><a href="https://grafana.com/grot/">Grot AI</a> — free public assistant</li>
-          <li><a href="https://grafana.com/docs/grafana-cloud/machine-learning/assistant/">Grafana Assistant</a> — built-in agent</li>
-          <li>MCP server: <a href="https://grafana.com/docs/grafana/latest/developer-resources/mcp/">self-hosted</a> / <a href="https://grafana.com/docs/grafana-cloud/machine-learning/assistant/configure/cloud-mcp/">managed</a> · <a href="https://grafana.com/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/">GCX</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
 
 </body>
 </html>

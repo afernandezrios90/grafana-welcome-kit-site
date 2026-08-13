@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grafana Cloud — Onboarding Resources</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+
+  <a class="backlink" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5"/><path d="M11 6l-6 6 6 6"/></svg>Back to the Welcome Kit</a>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-top">
+      <img class="brand-logo" src="../grafana-labs-logo-white.png" alt="Grafana Labs">
+      <span class="brand-tier">Resources</span>
+    </div>
+    <h1>Onboarding <span>Resources</span></h1>
+    <p>The strategy and how-to behind each onboarding decision — plus your team, support and training. Configure once, then keep this handy.</p>
+  </div>
+
+  <!-- MEET YOUR TEAM -->
+  <div class="card" id="team" style="margin-bottom:5px;">
+    <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.4"/><path d="M16 20c0-2.6 1.4-4.6 4-5"/></svg></span>Meet your team</h2>
+    <div class="grid cols-2">
+      <div>
+        <div class="team-role">
+          <span class="r-title">Account Executive</span> <span class="r-desc">— your main point of contact</span>
+        </div>
+        <div class="section-label" style="margin-top:4px;">On-demand, based on your needs</div>
+        <ul>
+          <li><strong>Technical Support</strong> <span class="sub">— troubleshooting, bugs &amp; issues</span></li>
+          <li><strong>Solutions Engineer</strong> <span class="sub">— solves new problems &amp; use cases</span></li>
+          <li><strong>Observability Architect</strong> <span class="sub">— shapes your observability strategy</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-label" style="margin-top:0;">Additional offerings</div>
+        <ul>
+          <li><strong>Professional Services</strong> <span class="sub">— Grafana experts for hands-on implementation</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- STACK DEPLOYMENT CONSIDERATIONS -->
+  <div class="card" id="stack" style="margin-bottom:5px;">
+    <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/></svg></span>Stack deployment considerations</h2>
+    <div class="grid cols-2">
+      <div>
+        <div class="section-label">Region selection strategy</div>
+        <p class="sub" style="margin:0;">Choose the region closest to your data sources and users to reduce latency and egress. A stack’s region can’t be changed after it’s created, so decide deliberately. To query data behind your firewall, connect it privately with Private Data Source Connect instead of exposing it to the internet.</p>
+        <a class="learn" href="https://grafana.com/docs/grafana-cloud/security-and-account-management/regional-availability/">Regional availability →</a> &nbsp;
+        <a class="learn" href="https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/">Private Data Source Connect →</a>
+      </div>
+      <div>
+        <div class="section-label">Single- vs multi-stack</div>
+        <p class="sub" style="margin:0;">A single stack is simplest and keeps all your telemetry together. Reach for multiple stacks to separate environments (prod vs. non-prod), business units, or data-residency boundaries — accepting the extra administration that comes with it.</p>
+        <a class="learn" href="https://grafana.com/docs/grafana-cloud/security-and-account-management/cloud-stacks/create-update-stacks">Manage Cloud stacks →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCESS & GOVERNANCE -->
+  <div class="card" id="access" style="margin-bottom:5px;">
+    <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>Access &amp; governance</h2>
+    <div class="grid cols-3">
+      <div>
+        <div class="section-label">Configure SSO</div>
+        <p class="sub" style="margin:0;">Connect your identity provider with SAML so your team signs in with corporate credentials and you manage access centrally.</p>
+        <a class="learn" href="https://grafana.com/docs/grafana/latest/setup-grafana/configure-access/configure-authentication/saml/">Configure SAML →</a>
+      </div>
+      <div>
+        <div class="section-label">RBAC strategy</div>
+        <p class="sub" style="margin:0;">Role-based access control governs what users can <em>do</em>. Map teams to roles (Viewer/Editor/Admin or custom) for least-privilege access to dashboards, alerts and settings.</p>
+        <a class="learn" href="https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/access-control/">Role-based access control →</a>
+      </div>
+      <div>
+        <div class="section-label">LBAC strategy</div>
+        <p class="sub" style="margin:0;">Label-based access control governs what data a team can <em>see</em>. Filter queries by label (team, environment, namespace) so groups sharing a Loki or Prometheus source only see their own telemetry.</p>
+        <a class="learn" href="https://grafana.com/docs/grafana/latest/administration/data-source-management/teamlbac/">LBAC for data sources →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- COST MANAGEMENT -->
+  <div class="card" id="cost" style="margin-bottom:5px;">
+    <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/></svg></span>Cost management</h2>
+    <p class="sub" style="margin:0 0 4px;">Your stack includes a <a href="https://grafana.com/docs/grafana-cloud/cost-management-and-billing/">Cost Management &amp; Billing</a> area to track spend against your committed budget.</p>
+    <div class="grid cols-2">
+      <div>
+        <div class="section-label">Set up usage alerts</div>
+        <p class="sub" style="margin:0;">Put alerts on usage so you’re warned before hitting committed limits and can react to spikes early.</p>
+        <a class="learn" href="https://grafana.com/docs/grafana-cloud/cost-management-and-billing/set-up/set-up-usage-alerts/">Set up usage alerts →</a>
+      </div>
+      <div>
+        <div class="section-label">Optimize telemetry ingestion</div>
+        <p class="sub" style="margin:0;">Most cost is created at the source. Trim unused metrics and high-cardinality labels, and let Adaptive Metrics aggregate series you don’t actively query — usually cutting metrics cost without losing visibility.</p>
+        <a class="learn" href="https://grafana.com/docs/grafana-cloud/cost-management-and-billing/reduce-costs/metrics-costs/control-metrics-usage-via-adaptive-metrics/">Adaptive Metrics →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPPORT -->
+  <div class="card" id="support" style="margin-bottom:5px;">
+    <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10.5 21a2 2 0 003 0"/></svg></span>How to contact Technical Support</h2>
+    <div class="flow">
+      <div class="flow-box">
+        <div class="flow-num">1</div>
+        <div class="flow-title">Log in &amp; select your org</div>
+        <img class="step-img" src="../images/support-1.png" alt="Select your organization from the dropdown">
+        <div class="flow-desc">Sign in at <a href="https://grafana.com">grafana.com</a> and choose your organization.</div>
+      </div>
+      <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l7 6-7 6"/></svg></div>
+      <div class="flow-box">
+        <div class="flow-num">2</div>
+        <div class="flow-title">Open the support area</div>
+        <img class="step-img" src="../images/support-2.png" alt="Support &gt; Get Support menu">
+        <div class="flow-desc">In the admin area, go to <code>SUPPORT &gt; Get Support</code>.</div>
+      </div>
+      <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l7 6-7 6"/></svg></div>
+      <div class="flow-box">
+        <div class="flow-num">3</div>
+        <div class="flow-title">Open a ticket</div>
+        <img class="step-img" src="../images/support-3.png" alt="Open a ticket">
+        <div class="flow-desc">Select <code>Support ticket &gt; + Open a ticket</code>.</div>
+      </div>
+    </div>
+    <div class="section-label">Best practices for faster resolution</div>
+    <ul class="two-col-list">
+      <li>Check the <a href="https://status.grafana.com/">System Status Page</a> first</li>
+      <li>Share versions, logs, config files &amp; screenshots</li>
+      <li>Give detailed steps to reproduce the issue</li>
+      <li>Watch for follow-up questions</li>
+    </ul>
+  </div>
+
+  <!-- TRAINING -->
+  <div class="card" id="training">
+    <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M12 3L2 8l10 5 10-5-10-5z"/><path d="M6 10.5V15c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg></span>Training &amp; learning resources</h2>
+    <div class="grid cols-3">
+      <div>
+        <div class="stage-badge"><span class="stage-num">1</span>Get started</div>
+        <ul>
+          <li><a href="https://grafana.com/whats-new/2025-11-18-interactive-learning-in-grafana/">Interactive learning</a> in Grafana</li>
+          <li><a href="https://grafana.com/docs/learning-hub/">Grafana Learning Hub</a> paths</li>
+          <li><a href="https://learn.grafana.com/">Grot Academy</a> for practitioners</li>
+        </ul>
+      </div>
+      <div>
+        <div class="stage-badge"><span class="stage-num">2</span>Go deeper</div>
+        <ul>
+          <li><a href="https://grafana.com/videos">Webinars</a></li>
+          <li><a href="https://grafana.com/docs/">Technical documentation</a></li>
+          <li>Play in a sandbox: <a href="https://play.grafana.org">Grafana Play</a> · <a href="https://grafana.com/products/cloud/free-tier/">free-forever tier</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="stage-badge"><span class="stage-num">3</span>Accelerate with AI</div>
+        <ul>
+          <li><a href="https://grafana.com/grot/">Grot AI</a> — free public assistant</li>
+          <li><a href="https://grafana.com/docs/grafana-cloud/machine-learning/assistant/">Grafana Assistant</a> — built-in agent</li>
+          <li>MCP server: <a href="https://grafana.com/docs/grafana/latest/developer-resources/mcp/">self-hosted</a> / <a href="https://grafana.com/docs/grafana-cloud/machine-learning/assistant/configure/cloud-mcp/">managed</a> · <a href="https://grafana.com/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/">GCX</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagenav">
+    <a class="backlink" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5"/><path d="M11 6l-6 6 6 6"/></svg>Back to the Welcome Kit</a>
+  </div>
+
+</body>
+</html>

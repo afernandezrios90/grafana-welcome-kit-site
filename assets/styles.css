@@ -1,0 +1,364 @@
+:root {
+  --orange: #FF671D;
+  --orange-light: #FF8A4D;
+  --ink: #171717;
+  --slate: #3A3A3A;
+  --muted: #696969;
+  --line: #E4E4E4;
+  --bg-soft: #F4F4F4;
+  --bg-card: #FFFFFF;
+  --accent-blue: #2970FF;
+  --accent-green: #04BC4C;
+}
+
+/* Fonts live at repo-root /fonts; this stylesheet is in /assets, so paths go up one level */
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter-SemiBold.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter-Bold.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  font-size: 10.2px;
+  line-height: 1.45;
+  font-feature-settings: "cv11", "ss01";
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+@page {
+  size: A4;
+  margin: 12mm 11mm;
+}
+
+/* ============================================================
+   SCREEN (web page): responsive centered "document".
+   Print/PDF is unaffected — it uses the @page rules above.
+   ============================================================ */
+@media screen {
+  html { background: #ECECEC; }
+  body {
+    max-width: 900px;
+    margin: 28px auto;
+    padding: 36px 36px 30px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.13);
+  }
+}
+/* NOTE: responsive stacking rules live at the END of this stylesheet,
+   so they win over the base .cols-2/.cols-3 rules by source order. */
+
+a { color: var(--accent-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3 { margin: 0; font-weight: 700; letter-spacing: -0.01em; }
+
+/* Poppins SemiBold for headings & subheadings */
+h1, h2, h3,
+.section-label, .kicker, .flow-title, .brand-tier, .step-txt {
+  font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+}
+h1 { letter-spacing: -0.02em; }
+
+/* ---------- Header ---------- */
+.hero {
+  background: linear-gradient(115deg, #171717 0%, #2A1A0F 55%, #3D2410 100%);
+  border-radius: 14px;
+  padding: 12px 22px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle at center, rgba(255,103,29,0.55), rgba(255,103,29,0) 70%);
+}
+.hero-top { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; }
+.brand-logo { height: 26px; width: auto; display: block; }
+.brand-tier {
+  margin-left: auto;
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  background: rgba(255,103,29,0.18);
+  border: 1px solid rgba(255,103,29,0.5);
+  color: #FFB98A;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.hero h1 { font-size: 22px; line-height: 1.1; margin-bottom: 6px; }
+.hero h1 span { color: #FFFFFF; }
+.hero p { margin: 0; max-width: 570px; color: #D6D7DC; font-size: 11.6px; }
+
+/* ---------- Layout ---------- */
+.grid { display: grid; gap: 11px; }
+.cols-2 { grid-template-columns: 1fr 1fr; }
+.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 10px 14px;
+  break-inside: avoid;
+}
+.card.soft { background: var(--bg-soft); }
+
+.card h2 {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+  color: var(--ink);
+}
+.ic {
+  width: 19px; height: 19px; flex: 0 0 19px;
+  border-radius: 6px;
+  background: var(--orange);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #fff;
+}
+.ic svg { width: 12px; height: 12px; }
+
+ul { margin: 0; padding-left: 0; list-style: none; }
+li { position: relative; padding-left: 15px; margin-bottom: 3px; }
+li::before {
+  content: "";
+  position: absolute; left: 2px; top: 6px;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--orange);
+}
+li.check { padding-left: 20px; margin-bottom: 9px; line-height: 1.5; }
+li.check:last-child { margin-bottom: 0; }
+li.check::before {
+  content: "";
+  left: 0; top: 1px;
+  width: 12px; height: 12px; border-radius: 3px;
+  background: #fff;
+  border: 1.6px solid #AFAFAF;
+}
+.sub { color: var(--muted); }
+strong { color: var(--ink); }
+
+/* step chips */
+.steps { display: flex; gap: 9px; }
+.step {
+  flex: 1;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 12px;
+  position: relative;
+}
+.step-num {
+  font-size: 8px; font-weight: 700; color: var(--orange);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.step-txt { font-weight: 600; font-size: 10.4px; margin-top: 2px; }
+
+.team-role { margin-bottom: 6px; }
+.team-role .r-title { font-weight: 700; }
+.team-role .r-desc { color: var(--muted); }
+
+.kicker {
+  font-size: 8px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--orange); font-weight: 700; margin-bottom: 3px;
+}
+
+.tag {
+  display:inline-block; font-size: 8.2px; font-weight: 600;
+  background: #EEF1F6; color: var(--accent-blue);
+  padding: 1px 7px; border-radius: 999px; margin-right:3px;
+}
+
+.callout {
+  margin-top: 9px;
+  background: linear-gradient(100deg, rgba(255,103,29,0.10), rgba(255,103,29,0.03));
+  border: 1px solid rgba(255,103,29,0.35);
+  border-radius: 8px;
+  padding: 8px 11px;
+  font-weight: 600;
+  color: #9A3D00;
+}
+
+/* arrow-joined flow boxes */
+.flow { display: flex; align-items: stretch; margin-top: 4px; }
+.flow-box {
+  flex: 1;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 11px;
+}
+.flow-num {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--orange); color: #fff;
+  font-size: 9px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 6px;
+}
+.flow-title { font-weight: 700; font-size: 10.6px; margin-bottom: 2px; }
+.step-img {
+  display: block; width: 100%; height: auto; max-height: 118px;
+  margin: 7px 0 6px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: #fff;
+}
+.flow-desc { color: var(--muted); font-size: 9.6px; line-height: 1.4; }
+.flow-desc code { font-size: 8.4px; }
+.flow-arrow {
+  flex: 0 0 28px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--orange);
+}
+.flow-arrow svg { width: 16px; height: 16px; }
+
+code {
+  background: #EEF0F3; border-radius: 4px; padding: 1px 5px;
+  font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 9px;
+  color: var(--slate);
+}
+
+.section-label {
+  font-size: 8.5px; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--muted); font-weight: 700; margin: 9px 2px 4px;
+}
+
+/* Numbered "pathway" pills (Training) — WELCOME KIT badge style */
+.stage-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600; font-size: 8.5px;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: #B24310;
+  background: rgba(255,103,29,0.10);
+  border: 1px solid rgba(255,103,29,0.45);
+  padding: 3px 11px 3px 3px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+.stage-num {
+  width: 15px; height: 15px; border-radius: 50%;
+  background: var(--orange); color: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 8.5px; font-weight: 700;
+}
+
+/* deep-dive "learn more" links + decision items */
+.learn { display: inline-block; font-weight: 600; font-size: 9.3px; margin-top: 3px; }
+.card[id] { scroll-margin-top: 18px; }
+li.check .d-title { font-weight: 700; }
+li.check .learn { margin-top: 0; margin-left: 4px; }
+
+/* ---------- Page-to-page navigation / CTA ---------- */
+.pagenav {
+  margin-top: 14px;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  justify-content: space-between;
+}
+.cta-banner {
+  margin-top: 12px;
+  background: linear-gradient(100deg, rgba(255,103,29,0.12), rgba(255,103,29,0.03));
+  border: 1px solid rgba(255,103,29,0.35);
+  border-radius: 11px;
+  padding: 12px 15px;
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  justify-content: space-between;
+}
+.cta-banner .cta-text { font-weight: 600; color: #7A3100; }
+.cta-banner .cta-text .cta-sub { display:block; color: var(--muted); font-weight: 400; font-size: 9.4px; margin-top: 1px; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--orange); color: #fff;
+  font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600; font-size: 10.5px;
+  padding: 9px 16px; border-radius: 999px; text-decoration: none;
+  white-space: nowrap;
+}
+.cta-btn:hover { text-decoration: none; filter: brightness(1.06); }
+.cta-btn svg { width: 14px; height: 14px; }
+.backlink {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--muted); font-size: 9.5px; font-weight: 600;
+  margin-bottom: 10px;
+}
+.backlink svg { width: 12px; height: 12px; }
+
+.footer {
+  margin-top: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 6px;
+  display: flex; align-items: center; gap: 10px;
+  color: var(--muted); font-size: 8.8px;
+}
+.footer .dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--orange); display: inline-block;
+}
+.footer-right { margin-left: auto; }
+
+.two-col-list { columns: 2; column-gap: 18px; }
+.two-col-list li { break-inside: avoid; }
+
+/* Numbered list — replaces the orange dot with an orange "1." marker */
+ol.num-list { counter-reset: step; list-style: none; margin: 0; padding-left: 0; }
+ol.num-list li { padding-left: 18px; }
+ol.num-list li::before {
+  counter-increment: step;
+  content: counter(step) ".";
+  left: 0; top: 0;
+  width: auto; height: auto;
+  background: none; border-radius: 0;
+  color: var(--orange); font-weight: 700;
+  font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 9.5px;
+}
+
+/* ============================================================
+   RESPONSIVE OVERRIDES (screen only) — placed last so they win
+   over the base .cols-2/.cols-3 rules by source order.
+   ============================================================ */
+/* Tablet / narrow: drop the training row to 2 columns */
+@media screen and (max-width: 760px) {
+  .cols-3 { grid-template-columns: 1fr 1fr; }
+}
+
+/* Mobile: single column, vertical step flows, full-bleed */
+@media screen and (max-width: 620px) {
+  body { margin: 0; padding: 22px 16px 28px; border-radius: 0; box-shadow: none; }
+  .cols-2, .cols-3 { grid-template-columns: 1fr; }
+  .flow { flex-direction: column; align-items: stretch; }
+  .flow-arrow { transform: rotate(90deg); flex: 0 0 auto; padding: 5px 0; }
+  .two-col-list { columns: 1; }
+  .hero h1 { font-size: 20px; }
+  .hero p { font-size: 11px; }
+}
