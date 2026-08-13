@@ -50,13 +50,13 @@
     <div class="grid cols-2">
       <div>
         <div class="section-label">Region selection strategy</div>
-        <p class="sub" style="margin:0;">Choose the region closest to your data sources and users to reduce latency and egress. A stack’s region can’t be changed after it’s created, so decide deliberately. To query data behind your firewall, connect it privately with Private Data Source Connect instead of exposing it to the internet.</p>
+        <p class="sub" style="margin:0;">A stack’s region <strong>can’t be changed once it’s created</strong> — Grafana’s guidance is to create a new stack rather than move an existing one — so choose deliberately up front. Weigh data-residency and compliance requirements, along with proximity to your data and users. To query data on a private network without exposing it to the internet, connect it with Private Data Source Connect.</p>
         <a class="learn" href="https://grafana.com/docs/grafana-cloud/security-and-account-management/regional-availability/">Regional availability →</a> &nbsp;
         <a class="learn" href="https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/">Private Data Source Connect →</a>
       </div>
       <div>
         <div class="section-label">Single- vs multi-stack</div>
-        <p class="sub" style="margin:0;">A single stack is simplest and keeps all your telemetry together. Reach for multiple stacks to separate environments (prod vs. non-prod), business units, or data-residency boundaries — accepting the extra administration that comes with it.</p>
+        <p class="sub" style="margin:0;"><strong>A single stack is simplest and keeps all your telemetry together.</strong> Reach for multiple stacks to separate environments (prod vs. non-prod), business units, or data-residency boundaries — accepting the extra administration that comes with it.</p>
         <a class="learn" href="https://grafana.com/docs/grafana-cloud/security-and-account-management/cloud-stacks/create-update-stacks">Manage Cloud stacks →</a>
       </div>
     </div>
@@ -68,17 +68,17 @@
     <div class="grid cols-3">
       <div>
         <div class="section-label">Configure SSO</div>
-        <p class="sub" style="margin:0;">Connect your identity provider with SAML so your team signs in with corporate credentials and you manage access centrally.</p>
-        <a class="learn" href="https://grafana.com/docs/grafana/latest/setup-grafana/configure-access/configure-authentication/saml/">Configure SAML →</a>
+        <p class="sub" style="margin:0;">Connect your identity provider so your team signs in with corporate credentials, centrally managed. Grafana Cloud supports <strong>SAML and OAuth/OIDC</strong> — Okta, Microsoft Entra ID, Google, GitHub and more.</p>
+        <a class="learn" href="https://grafana.com/docs/grafana/latest/setup-grafana/configure-access/configure-authentication/">Authentication options →</a>
       </div>
       <div>
         <div class="section-label">RBAC strategy</div>
-        <p class="sub" style="margin:0;">Role-based access control governs what users can <em>do</em>. Map teams to roles (Viewer/Editor/Admin or custom) for least-privilege access to dashboards, alerts and settings.</p>
+        <p class="sub" style="margin:0;">Role-based access control governs <strong>what users can do</strong>. Map teams to roles (Viewer/Editor/Admin or custom) for least-privilege access to dashboards, alerts and settings.</p>
         <a class="learn" href="https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/access-control/">Role-based access control →</a>
       </div>
       <div>
         <div class="section-label">LBAC strategy</div>
-        <p class="sub" style="margin:0;">Label-based access control governs what data a team can <em>see</em>. Filter queries by label (team, environment, namespace) so groups sharing a Loki or Prometheus source only see their own telemetry.</p>
+        <p class="sub" style="margin:0;">Label-based access control governs <strong>what data a team can see</strong>. Filter queries by label (team, environment, namespace) so groups sharing a Loki or Prometheus source only see their own telemetry.</p>
         <a class="learn" href="https://grafana.com/docs/grafana/latest/administration/data-source-management/teamlbac/">LBAC for data sources →</a>
       </div>
     </div>
@@ -91,13 +91,13 @@
     <div class="grid cols-2">
       <div>
         <div class="section-label">Set up usage alerts</div>
-        <p class="sub" style="margin:0;">Put alerts on usage so you’re warned before hitting committed limits and can react to spikes early.</p>
+        <p class="sub" style="margin:0;"><strong>Put alerts on usage so you’re warned</strong> before hitting committed limits and can react to spikes early.</p>
         <a class="learn" href="https://grafana.com/docs/grafana-cloud/cost-management-and-billing/set-up/set-up-usage-alerts/">Set up usage alerts →</a>
       </div>
       <div>
         <div class="section-label">Optimize telemetry ingestion</div>
-        <p class="sub" style="margin:0;">Most cost is created at the source. Trim unused metrics and high-cardinality labels, and let Adaptive Metrics aggregate series you don’t actively query — usually cutting metrics cost without losing visibility.</p>
-        <a class="learn" href="https://grafana.com/docs/grafana-cloud/cost-management-and-billing/reduce-costs/metrics-costs/control-metrics-usage-via-adaptive-metrics/">Adaptive Metrics →</a>
+        <p class="sub" style="margin:0;">Most cost is created at the source. <strong>Adaptive Telemetry</strong> keeps only the data you actually use across signals — Adaptive Metrics, Logs, Traces and Profiles — aggregating, dropping or sampling low-value data to cut cost without losing visibility.</p>
+        <a class="learn" href="https://grafana.com/docs/grafana-cloud/adaptive-telemetry/">Adaptive Telemetry →</a>
       </div>
     </div>
   </div>
